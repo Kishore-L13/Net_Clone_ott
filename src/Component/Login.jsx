@@ -19,8 +19,6 @@ const Login = () => {
       <h1 className="text-3xl font-bold mb-8">
         {isSignInForm ? "Sign In" : "Sign Up"}
       </h1>
-
-      {/* Conditional Input for Sign Up */}
       {!isSignInForm && (
         <input 
           type="text" 
@@ -43,8 +41,6 @@ const Login = () => {
           </div>
           <p className="hover:underline cursor-pointer">Need help?</p>
       </div>
-
-      {/* --- The Toggle Line --- */}
       <p 
         className="py-4 cursor-pointer hover:underline text-gray-400" 
         onClick={toggleSignInForm}
