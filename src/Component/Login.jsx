@@ -13,10 +13,14 @@ const Handlevalidate = ()=>{
   const password = isPassword.current.value;
 const message =Validate(email,password);
 setErrormessage(message);
-if (message===null){
-  return
-  //signin signup code
-}
+// if (message===null){
+//   return
+//   //signin signup code
+// }
+// if(message){
+//   //signin or singn up
+// }
+if(message) return;
 }
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
