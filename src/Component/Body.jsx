@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "./Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {onAuthStateChanged } from "firebase/auth";
+import { auth } from "../Utilis/Firebase";
 import Browse from "./Browse";
+import { addUser, removeUser } from "../Utilis/useSlice";
 const approuter = createBrowserRouter([
     {
         path:"/",
@@ -11,6 +14,22 @@ const approuter = createBrowserRouter([
         element:<Browse/> 
     }
 ])
+useEffect (()=>{
+
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    const {uid,email,displayName} = user
+    dispatch (addUser({uid:uid,email:email,displayName:displayName}))
+  } else {
+    // User is signed out
+    dispatch(removeUser())
+  }
+});
+
+},[])
 const Body = ()=>{
     return(
         <div>
