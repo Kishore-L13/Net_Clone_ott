@@ -1,16 +1,18 @@
-import React from "react"
+// useSlice.js
 import { createSlice } from "@reduxjs/toolkit";
+
 const useSlice = createSlice({
-name:'user',
-initialState:null,
-reducers:{
-    addUser:(state,action)=>{
-        return action.payload;
+  name: 'user',
+  initialState: null,
+  reducers: {
+    addUser: (state, action) => {
+      return action.payload;
     },
-    removeUser:(state,action)=>{
-        return null;
+    removeUser: (state, action) => {
+      return null;
     },
-},    
-})
-export const {addUser,removeUser}= useSlice.action;
-export default useSlice
+  },    
+});
+
+export const { addUser, removeUser } = useSlice.actions; 
+export default useSlice.reducer; //  FIX: Export the reducer function itself!
