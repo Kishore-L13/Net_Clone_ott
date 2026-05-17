@@ -2,7 +2,7 @@ import Header from "./Header";
 import React, { useState,useRef } from "react";
 import { Validate } from "../Utilis/Validate";
 import { auth } from "../Utilis/Firebase";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -32,7 +32,18 @@ createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-console.log(user)
+updateProfile(user, {
+            displayName: isName.current.value,
+          })
+          .then(() => {
+            // Profile updated successfully! 
+            // Your Header component's onAuthStateChanged will automatically pick up 
+            // the updated user object (with displayName) and handle navigation.
+            console.log("Profile updated:", auth.currentUser);
+          })
+          .catch((error) => {
+            setErrormessage(error.message);
+          });
 navigate("/browse")
     // ...
   })
