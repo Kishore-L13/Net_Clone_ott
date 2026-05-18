@@ -1,23 +1,16 @@
 import React, { useEffect } from "react";
 import Header from "./Header";
-import { API_MOVIE, API_options } from "../Utilis/Constants";
+import useNowPlaying from "../CustomHooks/useNowPlaying";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer"
+
 const Browse = ()=>{
-    const API_Fetch = async()=>{
-     try   {const data = await fetch(API_MOVIE,API_options)
-        const result = await data.json();
-        console.log(result) 
-    }
-    catch(error) {
-        console.error("BAD REQUEST",error);
-    }
-}
-    useEffect(()=>{
-        API_Fetch()
-    },[])
+   useNowPlaying()
     return(
         <div>
         <Header/>
-        Browse
+        <MainContainer/>
+        <SecondaryContainer/>
         </div>
     )
 }
