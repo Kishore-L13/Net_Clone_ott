@@ -3,14 +3,13 @@ import React, { useState,useRef } from "react";
 import { Validate } from "../Utilis/Validate";
 import { auth } from "../Utilis/Firebase";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errormessage , setErrormessage] = useState(null);
   const isEmail = useRef(null);
   const isName = useRef(null);
   const isPassword = useRef(null);
-  const navigate = useNavigate()
 const Handlevalidate = ()=>{
   const email = isEmail.current.value;
   const password = isPassword.current.value;
@@ -61,14 +60,12 @@ navigate("/browse")
     // Signed in 
     const user = userCredential.user;
     console.log(user)
-    navigate("/browse")
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
      setErrormessage(errorCode + "-"+errorMessage)
-     navigate("/")
   });
 }
 }
