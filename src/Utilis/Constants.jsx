@@ -14,3 +14,5 @@ export const API_options = {
 //   .then(res => console.log(res))
 //   .catch(err => console.error(err));
 export const API_MOVIE = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
+// Add this line to the bottom of your Constants.jsx file
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";

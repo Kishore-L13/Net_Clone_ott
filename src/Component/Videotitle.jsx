@@ -1,18 +1,17 @@
 import React from "react";
 
-const Videotitle = () => {
+const VideoTitle = ({ title, overview }) => {
   return (
-    // Changed px-12 to px-6 or px-12 to match your Header logo alignment
-    <div className="absolute top-0 left-0 w-full aspect-video pt-[24%] px-6 md:px-16 bg-gradient-to-r from-black via-black/50 to-transparent text-white z-10 flex flex-col justify-center">
+    <div className="absolute top-0 left-0 w-full aspect-video pt-[24%] px-6 md:px-16 bg-gradient-to-r from-black via-black/50 to-transparent text-white z-10 flex flex-col justify-center animate-fade-in">
       
-      {/* Movie Title */}
+      {/* 1. Renders the dynamic title coming from the API */}
       <h1 className="text-xl md:text-5xl lg:text-6xl font-bold tracking-wide drop-shadow-lg">
-        The Punisher: One Last Kill
+        {title}
       </h1>
       
-      {/* Movie Description */}
+      {/* 2. Renders the dynamic description overview coming from the API */}
       <p className="hidden md:inline-block py-4 text-sm md:text-md lg:text-lg w-full md:w-2/5 lg:w-1/3 text-gray-200 drop-shadow-md leading-relaxed">
-        As Frank Castle searches for meaning beyond revenge, an unexpected force pulls him back into the fight.
+        {overview}
       </p>
       
       {/* Buttons Container */}
@@ -28,4 +27,4 @@ const Videotitle = () => {
   );
 };
 
-export default Videotitle;
+export default VideoTitle;
